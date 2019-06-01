@@ -1,0 +1,29 @@
+﻿.div {
+    width: 96%;
+    padding: 40px 2% 50px 2%;
+    border: solid 0.5px #ccc;
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+}
+
+    .table th {
+        padding: 0px 30px 15px 30px;
+        font-size: 20px;
+    }
+
+    .table td {
+        padding: 15px 30px;
+        border-bottom: solid 0.5px #ccc;
+    }
+
+.td{
+    cursor: pointer;
+}
+
+    .td:hover {
+        background-color: #F8F8F8;
+    }

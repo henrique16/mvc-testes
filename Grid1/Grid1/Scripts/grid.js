@@ -5,7 +5,9 @@
     const result = TypeGrid(type);
 
     const div = document.createElement('div');
+    div.classList.add('div');
     const table = document.createElement('table');
+    table.classList.add('table');
     const trH = document.createElement('tr')
 
     document.body.appendChild(div);
@@ -17,10 +19,12 @@
         trH.appendChild(th);
         th.appendChild(document.createTextNode(result[key]));
         array.push(key);
+
     }
 
     for (let index = 0; index < reponse.length; index++) {
         const trD = document.createElement('tr');
+        trD.classList.add('td');
         table.appendChild(trD);
 
         for (let i = 0; i < array.length; i++) {
@@ -29,7 +33,6 @@
             td.appendChild(document.createTextNode(reponse[index][array[i]]));
         }
     }
-
 }
 
 function TypeGrid(type) {
