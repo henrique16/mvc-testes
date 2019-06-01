@@ -1,0 +1,14 @@
+﻿<input id="data" type="hidden" name="name" value="@ViewBag.Data" />
+<input id="type" type="hidden" name="name" value="@ViewBag.Type" />
+<h1>GRID</h1>
+
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function () {
+        debugger
+        const data = document.getElementById('data');
+        const dataJSON = JSON.parse(data.value);
+        const type = document.getElementById('type').value;
+
+        Grid(dataJSON, type);
+    });
+</script>
