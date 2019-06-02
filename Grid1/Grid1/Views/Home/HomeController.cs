@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grid1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,14 +11,14 @@ namespace Grid1.Controllers
 {
     public class HomeController : Controller
     {
-        public class TrabalhadorGerModel
+        
+
+        public class EmpresaGerModel
         {
             public int codigo { get; set; }
             public string nome { get; set; }
-            public int empresa { get; set; }
-            public string descricaoEmpresa { get; set; }
-            public int registro { get; set; }
-            public string descricaoCargo { get; set; }
+            public int numero { get; set; }
+            public string rua { get; set; }
         }
 
         public ActionResult Index()
@@ -42,17 +43,73 @@ namespace Grid1.Controllers
                 descricaoCargo = "analista programador jr"
             };
 
+
             IList<TrabalhadorGerModel> list = new List<TrabalhadorGerModel>();
             list.Add(obj1);
             list.Add(obj2);
 
-            JavaScriptSerializer oSerializer = new JavaScriptSerializer();
-            string sJSON = oSerializer.Serialize(list);
+            IDictionary<string, string> dic = new Dictionary<string, string>();
+            dic.Add("codigo", "Código");
+            dic.Add("nome", "Nome");
+            dic.Add("descricaoEmpresa", "Empresa");
+            dic.Add("descricaoCargo", "Cargo");
 
-            ViewBag.Data = sJSON;
-            ViewBag.Type = "TrabalhadorGerModel";
+            //ViewBag.Data = list;
+            //ViewBag.Dict = dic;
+
+            JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+            string dataJSON = oSerializer.Serialize(list);
+            string dicJSON = oSerializer.Serialize(dic);
+
+            ViewBag.Data = dataJSON;
+            ViewBag.Dict = dicJSON;
 
             return View();
+        }
+
+        [System.Web.Services.WebMethod]
+        public ActionResult Helper()
+        {
+            EmpresaGerModel obj1 = new EmpresaGerModel()
+            {
+                codigo = 1,
+                nome = "legal",
+                numero = 1000,
+                rua = "Rua"
+            };
+
+            EmpresaGerModel obj2 = new EmpresaGerModel()
+            {
+                codigo = 2,
+                nome = "bad",
+                numero = 2000,
+                rua = "RuaA"
+            };
+
+
+            IList<EmpresaGerModel> list = new List<EmpresaGerModel>();
+            list.Add(obj1);
+            list.Add(obj2);
+
+            IDictionary<string, string> dic = new Dictionary<string, string>();
+            dic.Add("codigo", "Código");
+            dic.Add("nome", "Nome");
+            dic.Add("numero", "Número");
+            dic.Add("rua", "Rua");
+
+            string[] array = new string[] { "codigo", "nome" };
+
+            JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+            string dataJSON = oSerializer.Serialize(list);
+            string dicJSON = oSerializer.Serialize(dic);
+            string arrayJSON = oSerializer.Serialize(array);
+
+            ViewBag.DataEmp = dataJSON;
+            ViewBag.DictionaryEmp = dicJSON;
+            ViewBag.ArrayEmp = arrayJSON;
+
+            Index();
+            return View("Index");
         }
     }
 }

@@ -20,10 +20,10 @@
         border-bottom: solid 0.5px #ccc;
     }
 
-.td{
+.tr{
     cursor: pointer;
 }
 
-    .td:hover {
+    .tr:hover {
         background-color: #F8F8F8;
     }

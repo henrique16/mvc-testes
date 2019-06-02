@@ -1,14 +1,42 @@
 ﻿<input id="data" type="hidden" name="name" value="@ViewBag.Data" />
-<input id="type" type="hidden" name="name" value="@ViewBag.Type" />
+<input id="dic" type="hidden" name="name" value="@ViewBag.Dict" />
+@*<input id="dataEmp" type="hidden" name="name" value="@ViewBag.DataEmp" />
+<input id="dicEmp" type="hidden" name="name" value="@ViewBag.DictionaryEmp" />
+<input id="arrayEmp" type="hidden" name="name" value="@ViewBag.ArrayEmp" />*@
+
+@model Grid1.Models.TrabalhadorGerModel
+
 <h1>GRID</h1>
+
+<div style="padding-bottom: 20px;">
+    <input type="text" name="name" value="" />
+    @Html.ActionLink("Helper", "Helper")
+    <span></span>
+</div>
+<div id="grid" class="div">
+    @*<table class="table">
+            <tr>
+                @foreach (var item in ViewBag.Dict)
+                {
+                    <th>@item.Value</th>
+                }
+            </tr>
+            @foreach (var item in ViewBag.Data)
+            {
+                <tr class="tr">
+                    @foreach (var itemList in ViewBag.Dict)
+                    {
+                        object key = (object)itemList.Key;
+                        <td>@item</td>
+                    }
+                </tr>
+            }
+        </table>*@
+</div>
 
 <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {
         debugger
-        const data = document.getElementById('data');
-        const dataJSON = JSON.parse(data.value);
-        const type = document.getElementById('type').value;
-
-        Grid(dataJSON, type);
+        new Grid(data.value, dic.value, 'grid');
     });
 </script>
